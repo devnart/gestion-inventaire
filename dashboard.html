@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body class="light">
+    <aside class="sidebar">
+      <div class="logo">
+        <img src="images/logo_light.svg" alt="Dashboard Logo" />
+      </div>
+      <div class="side-menu">
+        <a href="#"><h2>dashboard</h2></a>
+        <a href="#"><h2>Categories</h2></a>
+        <ul>
+          <li><a href="#">Laptops</a></li>
+          <li><a href="#">TV</a></li>
+          <li><a href="#">Smart Phones</a></li>
+          <li><a href="#">Tables</a></li>
+          <li><a href="#">Chaires</a></li>
+          <li><a href="#">Lamp</a></li>
+          <li><a href="#">Laptops</a></li>
+        </ul>
+      </div>
+    </aside>
+    <section class="container">
+      <div class="username">
+        <h3>Welcome, Admin</h3>
+        <div class="avatar">
+          <img src="images/avatar.png" alt="Avatar" />
+        </div>
+      </div>
+      <div class="options">
+        <a href="#" class="btn">Add</a>
+        <a href="javascript:void(0)" onclick="deleteItem()" class="btn red disabled"
+          >Delete</a
+        >
+        <input type="search" class="search" placeholder="Search .." />
+      </div>
+      <div class="products">
+        <table>
+          <tr>
+            <th></th>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Brand</th>
+            <th>Qty</th>
+            <th>Price</th>
+            <th>Category</th>
+            <th></th>
+            <th></th>
+          </tr>
+          <tr>
+            <td><input type="checkbox" class="item" /></td>
+            <td>#1</td>
+            <td>Iphone XS</td>
+            <td>Apple</td>
+            <td>21</td>
+            <td>1099$</td>
+            <td>Phones</td>
+            <td>
+              <div>
+                <a href="#"><img src="images/edit.svg" alt="edit" /></a>
+                <a href="#"><img src="images/delete.svg" alt="delete" /></a>
+              </div>
+            </td>
+            <td>
+              <a href="#"><img src="images/arrow.svg" alt="arrow" /></a>
+            </td>
+          </tr>
+          <tr>
+            <td><input type="checkbox" class="item" /></td>
+            <td>#1</td>
+            <td>Iphone XS</td>
+            <td>Apple</td>
+            <td>21</td>
+            <td>1099$</td>
+            <td>Phones</td>
+            <td>
+              <div>
+                <a href="#"><img src="images/edit.svg" alt="edit" /></a>
+                <a href="#"><img src="images/delete.svg" alt="delete" /></a>
+              </div>
+            </td>
+            <td>
+              <a href="#"><img src="images/arrow.svg" alt="arrow" /></a>
+            </td>
+          </tr>
+          <tr>
+            <td><input type="checkbox" class="item" /></td>
+            <td>#1</td>
+            <td>Iphone XS</td>
+            <td>Apple</td>
+            <td>21</td>
+            <td>1099$</td>
+            <td>Phones</td>
+            <td>
+              <div>
+                <a href="#"><img src="images/edit.svg" alt="edit" /></a>
+                <a href="#"><img src="images/delete.svg" alt="delete" /></a>
+              </div>
+            </td>
+            <td>
+              <a href="#"><img src="images/arrow.svg" alt="arrow" /></a>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </section>
+  </body>
+  <script src="js/main.js"></script>
+</html>
