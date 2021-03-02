@@ -1,5 +1,5 @@
 var items = document.querySelectorAll(".item");
-
+var rows = document.querySelectorAll("tr");
 items.forEach((item) => {
   var row = item.parentElement.parentElement;
   deleteBtn = document.querySelector(
@@ -11,7 +11,15 @@ items.forEach((item) => {
       row.classList.toggle("selected");
     } else {
       row.classList.toggle("selected");
+      rows.forEach((e) => {
+
+        if (e.classList.contains("selected")==false) {
+            console.log("Hello")
+          deleteBtn.classList.add("disabled");
+        }});
     }
+
+
     //   if (item.classList.contains("selected")==false) {
     //     deleteBtn.classList.add("disabled")
     // }
@@ -20,11 +28,7 @@ items.forEach((item) => {
   });
 });
 
-items.forEach((item) => {
-  var row = item.parentElement.parentElement;
-  item.addEventListener("change", () => {
-    if (row.classList.contains("selected")==false) {
-      deleteBtn.classList.add("disabled");
-    }
-  });
-});
+var rows = document.querySelectorAll("tr");
+
+
+
