@@ -21,7 +21,7 @@ items.forEach((item) => {
     if((item.checked==false))
     {
       deleteBtn.classList.add("disabled");
-    }
+    }git 
     for(let i=0;i<items.length;i++)
     {
       if(items[i].checked==true)
@@ -37,12 +37,6 @@ items.forEach((item) => {
   });
 });
 
-<<<<<<< HEAD
-var rows = document.querySelectorAll("tr");
-
-
-
-=======
 // items.forEach((item) => {
 //   var row = item.parentElement.parentElement;
 //   item.addEventListener("change", () => {
@@ -74,4 +68,3 @@ function navSlide() {
 }
 
 navSlide();
->>>>>>> refs/remotes/origin/main
