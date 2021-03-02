@@ -18,8 +18,17 @@ items.forEach((item) => {
           deleteBtn.classList.add("disabled");
         }});
     }
-
-
+    if((item.checked==false))
+    {
+      deleteBtn.classList.add("disabled");
+    }
+    for(let i=0;i<items.length;i++)
+    {
+      if(items[i].checked==true)
+      {
+        deleteBtn.classList.remove("disabled");
+      }
+    }
     //   if (item.classList.contains("selected")==false) {
     //     deleteBtn.classList.add("disabled")
     // }
@@ -28,7 +37,41 @@ items.forEach((item) => {
   });
 });
 
+<<<<<<< HEAD
 var rows = document.querySelectorAll("tr");
 
 
 
+=======
+// items.forEach((item) => {
+//   var row = item.parentElement.parentElement;
+//   item.addEventListener("change", () => {
+//     if (row.classList.contains("selected")==false) {
+//       deleteBtn.classList.add("disabled");
+//     }
+    
+
+//   });
+// });
+
+// my comment
+
+function navSlide() {
+  const burger = document.querySelector(".burger");
+  const nav = document.querySelector(".side-menu");
+  const aside=document.querySelector("aside");
+  
+
+  burger.addEventListener("click", () => {
+    //Toggle Nav
+    nav.classList.toggle("side-active");
+
+   aside.classList.toggle("aside-active");
+    //Burger Animation
+    burger.classList.toggle("toggle");
+  });
+
+}
+
+navSlide();
+>>>>>>> refs/remotes/origin/main
