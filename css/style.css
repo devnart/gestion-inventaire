@@ -146,10 +146,17 @@ main.container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  height: 100vh;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 main.container .login {
-  padding: 0 60px;
+  margin: 0 60px;
   -webkit-box-flex: 33%;
       -ms-flex: 33%;
           flex: 33%;
@@ -209,6 +216,12 @@ main.container .login form input[type="submit"] {
 
 main.container .image-container {
   height: 100vh;
+}
+
+@media (max-width: 480px) {
+  main.container .image-container {
+    display: none;
+  }
 }
 
 main.container .image-container img {

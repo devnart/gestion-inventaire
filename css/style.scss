@@ -154,8 +154,11 @@ $background: #f7f7f7;
 // Start Styling
 main.container {
   display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
   .login {
-    padding: 0 60px;
+    margin: 0 60px;
     flex: 33%;
     display: flex;
     justify-content: center;
@@ -193,6 +196,9 @@ main.container {
   }
   .image-container {
     height: 100vh;
+    @include breakpoint(sm) {
+display: none;
+      }
     img {
       height: 100%;
       width: 100%;
