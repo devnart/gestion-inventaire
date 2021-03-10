@@ -12,6 +12,11 @@
       <div class="logo">
         <img src="images/logo_light.svg" alt="Dashboard Logo" />
       </div>
+      <div class="burger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </div>
       <div class="side-menu">
         <a href="#"><h2>dashboard</h2></a>
         <a href="#"><h2>Categories</h2></a>
@@ -25,11 +30,7 @@
           <li><a href="#">Laptops</a></li>
         </ul>
       </div>
-      <div class="burger">
-        <div class="line1"></div>
-        <div class="line2"></div>
-        <div class="line3"></div>
-      </div>
+
     </aside>
     <section class="container">
       <div class="username">
@@ -39,18 +40,18 @@
         </div>
       </div>
       <div class="options">
-        <a href="#" class="btn">Add</a>
-        <a href="javascript:void(0)" onclick="deleteItem()" class="btn red disabled"
-          >Delete</a
-        >
+        <div class="add_delete">
+          <a href="#" class="btn" id="addBtn">Add</a>
+          <a href="javascript:void(0)" class="btn red disabled">Delete</a>
+        </div>
+
         <input type="search" class="search" placeholder="Search .." />
         <select name="search" id="search">
           <option value="search" selected>Search By</option>
-          <option value="id" >ID</option>
-          <option value="name" >Name</option>
-          <option value="brand" >Brand</option>
-          <option value="category" >Category</option>
-
+          <option value="id">ID</option>
+          <option value="name">Name</option>
+          <option value="brand">Brand</option>
+          <option value="category">Category</option>
         </select>
       </div>
       <div class="products">
@@ -76,53 +77,264 @@
             <td>Phones</td>
             <td>
               <div>
-                <a href="#"><img src="images/edit.svg" alt="edit" /></a>
+                <a href="#"
+                  ><img src="images/edit.svg" alt="edit" class="editBtn"
+                /></a>
                 <a href="#"><img src="images/delete.svg" alt="delete" /></a>
               </div>
             </td>
-            <td>
+            <td class="moreInfo">
               <a href="#"><img src="images/arrow.svg" alt="arrow" /></a>
             </td>
           </tr>
           <tr>
             <td><input type="checkbox" class="item" /></td>
-            <td>#1</td>
-            <td>Iphone XS</td>
-            <td>Apple</td>
-            <td>21</td>
-            <td>1099$</td>
+            <td>#2</td>
+            <td>Lamp</td>
+            <td>Ingelic</td>
+            <td>100</td>
+            <td>12$</td>
             <td>Phones</td>
             <td>
               <div>
-                <a href="#"><img src="images/edit.svg" alt="edit" /></a>
+                <a href="#"
+                  ><img src="images/edit.svg" alt="edit" class="editBtn"
+                /></a>
                 <a href="#"><img src="images/delete.svg" alt="delete" /></a>
               </div>
             </td>
-            <td>
+            <td class="moreInfo">
               <a href="#"><img src="images/arrow.svg" alt="arrow" /></a>
             </td>
           </tr>
           <tr>
             <td><input type="checkbox" class="item" /></td>
-            <td>#1</td>
-            <td>Iphone XS</td>
-            <td>Apple</td>
-            <td>21</td>
-            <td>1099$</td>
+            <td>#2</td>
+            <td>Lamp</td>
+            <td>Ingelic</td>
+            <td>100</td>
+            <td>12$</td>
             <td>Phones</td>
             <td>
               <div>
-                <a href="#"><img src="images/edit.svg" alt="edit" /></a>
+                <a href="#"
+                  ><img src="images/edit.svg" alt="edit" class="editBtn"
+                /></a>
                 <a href="#"><img src="images/delete.svg" alt="delete" /></a>
               </div>
             </td>
+            <td class="moreInfo">
+              <a href="#"><img src="images/arrow.svg" alt="arrow" /></a>
+            </td>
+          </tr>
+          <tr>
+            <td><input type="checkbox" class="item" /></td>
+            <td>#2</td>
+            <td>Lamp</td>
+            <td>Ingelic</td>
+            <td>100</td>
+            <td>12$</td>
+            <td>Phones</td>
             <td>
+              <div>
+                <a href="#"
+                  ><img src="images/edit.svg" alt="edit" class="editBtn"
+                /></a>
+                <a href="#"><img src="images/delete.svg" alt="delete" /></a>
+              </div>
+            </td>
+            <td class="moreInfo">
+              <a href="#"><img src="images/arrow.svg" alt="arrow" /></a>
+            </td>
+          </tr>
+          <tr>
+            <td><input type="checkbox" class="item" /></td>
+            <td>#2</td>
+            <td>Lamp</td>
+            <td>Ingelic</td>
+            <td>100</td>
+            <td>12$</td>
+            <td>Phones</td>
+            <td>
+              <div>
+                <a href="#"
+                  ><img src="images/edit.svg" alt="edit" class="editBtn"
+                /></a>
+                <a href="#"><img src="images/delete.svg" alt="delete" /></a>
+              </div>
+            </td>
+            <td class="moreInfo">
+              <a href="#"><img src="images/arrow.svg" alt="arrow" /></a>
+            </td>
+          </tr>
+          <tr>
+            <td><input type="checkbox" class="item" /></td>
+            <td>#3</td>
+            <td>Inspiron 3210</td>
+            <td>Dell</td>
+            <td>90</td>
+            <td>789$</td>
+            <td>Laptops</td>
+            <td>
+              <div>
+                <a href="#"
+                  ><img src="images/edit.svg" alt="edit" class="editBtn"
+                /></a>
+                <a href="#"><img src="images/delete.svg" alt="delete" /></a>
+              </div>
+            </td>
+            <td class="moreInfo">
               <a href="#"><img src="images/arrow.svg" alt="arrow" /></a>
             </td>
           </tr>
         </table>
       </div>
     </section>
+    <div id="addModal" class="modal">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>add new product</h2>
+        <form action="" method="">
+          <div>
+            <label for="p_id">Product ID:</label>
+            <input type="text" />
+          </div>
+          <div>
+            <label for="p_name">Product Name:</label>
+            <input type="text" />
+          </div>
+          <div>
+            <label for="p_brand">Brand:</label>
+            <input type="text" />
+          </div>
+          <div>
+            <label for="p_category">Category:</label>
+            <select name="category" id="">
+              <option value="select">Select</option>
+              <option value="Laptops">Laptops</option>
+              <option value="Phones">Phones</option>
+            </select>
+          </div>
+          <div>
+            <label for="qty">Quantity</label>
+            <input type="number" />
+          </div>
+          <div>
+            <label for="Price">Price</label>
+            <input type="number" />
+          </div>
+          <div>
+            <label for="description">Description</label>
+            <textarea
+              name="description"
+              id="description"
+              cols="30"
+              rows="10"
+            ></textarea>
+          </div>
+          <div>
+            <input type="file" id="uploadImg" hidden />
+
+            <label for="uploadImg"
+              ><img
+                src="images/upload.svg"
+                alt="upload icon"
+                style="display: inline; width: 90px; cursor: pointer"
+            /></label>
+            <span id="file-chosen">No file chosen</span>
+          </div>
+          <input type="submit" value="Add" />
+        </form>
+      </div>
+    </div>
+    <div id="editModal" class="modal">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>edit product</h2>
+        <form action="" method="">
+          <div>
+            <label for="p_id">Product ID:</label>
+            <input type="text" />
+          </div>
+          <div>
+            <label for="p_name">Product Name:</label>
+            <input type="text" />
+          </div>
+          <div>
+            <label for="p_brand">Brand:</label>
+            <input type="text" />
+          </div>
+          <div>
+            <label for="p_category">Category:</label>
+            <select name="category" id="category">
+              <option value="select">Select</option>
+              <option value="Laptops">Laptops</option>
+              <option value="Phones">Phones</option>
+            </select>
+          </div>
+          <div>
+            <label for="qty">Quantity</label>
+            <input type="number" />
+          </div>
+          <div>
+            <label for="Price">Price</label>
+            <input type="number" />
+          </div>
+          <div>
+            <label for="description">Description</label>
+            <textarea name="description" cols="30" rows="10"></textarea>
+          </div>
+          <div>
+            <input type="file" id="editImg" hidden />
+
+            <label for="editImg"
+              ><img
+                src="images/upload.svg"
+                alt="upload icon"
+                style="display: inline; width: 90px; cursor: pointer"
+            /></label>
+            <span id="file-chosen">No file chosen</span>
+          </div>
+          <input type="submit" value="Edit" />
+        </form>
+      </div>
+    </div>
+    <div id="info" class="modal">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <div>
+          <div>
+            <img src="images/iphone.png" alt="Iphone" />
+          </div>
+          <div>
+            <h2>Iphone XS Max</h2>
+            <p>Apple</p>
+            <p>
+              iPhone XS Max has a 6.5-inch all-screen Super Retina display. The
+              back is glass, and there's a stainless steel band around the
+              frame. The side button is on the right side of the device. There
+              are 12MP wide-angle and telephoto cameras on the back. There's a
+              Quad-LED True Tone flash on the back and a SIM tray on the right
+              side that holds a "fourth form factor" (4FF) nano-SIM card. The
+              IMEI is etched on the SIM tray.
+            </p>
+            <div>
+              <div>
+                <p>Qty</p>
+                <h3>24pc</h3>
+              </div>
+              <div>
+                <p>Price</p>
+                <h3>1099$</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
   <script src="js/main.js"></script>
 </html>

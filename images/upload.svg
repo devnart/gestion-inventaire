@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="119" height="119" viewBox="0 0 119 119">
+  <g id="Group_51" data-name="Group 51" transform="translate(-554 -728)">
+    <rect id="Rectangle_22" data-name="Rectangle 22" width="119" height="119" rx="10" transform="translate(554 728)" fill="#8b8cf7" opacity="0.08"/>
+    <g id="Group_19" data-name="Group 19" transform="translate(138.5 0.303)" style="isolation: isolate">
+      <g id="Group_18" data-name="Group 18" transform="translate(8.99 11.697)">
+        <g id="cloud-computing" transform="translate(440.853 742)" opacity="0.6">
+          <g id="Group_17" data-name="Group 17" transform="translate(0 0)">
+            <g id="Group_16" data-name="Group 16" transform="translate(0 0)">
+              <path id="Path_1" data-name="Path 1" d="M43.125,68.5a17.79,17.79,0,0,0-35,3.04A9.7,9.7,0,0,0,9.744,90.814H17.83V87.579H9.744a6.469,6.469,0,1,1,0-12.938,1.617,1.617,0,0,0,1.617-1.617A14.556,14.556,0,0,1,40.2,70.193a1.617,1.617,0,0,0,1.375,1.294,8.087,8.087,0,0,1-1.1,16.092H34v3.235h6.469A11.321,11.321,0,0,0,43.125,68.5Z" transform="translate(0 -55.032)" fill="#1d1fdd"/>
+              <path id="Path_2" data-name="Path 2" d="M187.5,249.481l-6.469,6.469,2.28,2.28,3.72-3.7v15.51h3.235v-15.51l3.7,3.7,2.28-2.28-6.469-6.469A1.617,1.617,0,0,0,187.5,249.481Z" transform="translate(-162.736 -229.403)" fill="#1d1fdd"/>
+            </g>
+          </g>
+        </g>
+        <text id="upload" transform="translate(431.51 802.803)" fill="#1d1fdd" font-size="19" font-family="Poppins-SemiBold, Poppins" font-weight="600" opacity="0.6"><tspan x="0" y="0">upload</tspan></text>
+      </g>
+    </g>
+  </g>
+</svg>
