@@ -1,10 +1,9 @@
 <?php
 session_start();
 
-if($_SESSION['loggedIn']){
-    
-}else {
-    
+if ($_SESSION['loggedIn']) {
+} else {
+
     header('Location: login.php');
 }
 
@@ -38,7 +37,6 @@ if (isset($_POST['submit'])) {
     } else {
         echo 'Query Error' . mysqli_error($connection);
     }
-    
 }
 if (isset($_POST['submit_edit'])) {
     $id = $_POST['p_id'];
@@ -61,9 +59,9 @@ if (isset($_POST['submit_edit'])) {
 }
 
 ?>
-<?php 
+<?php
 include 'delete_product.php';
-?> 
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -86,8 +84,12 @@ include 'delete_product.php';
             <div class="line3"></div>
         </div>
         <div class="side-menu">
-            <a href="#"><h2>dashboard</h2></a>
-            <a href="#"><h2>Categories</h2></a>
+            <a href="#">
+                <h2>dashboard</h2>
+            </a>
+            <a href="#">
+                <h2>Categories</h2>
+            </a>
             <ul>
                 <li><a href="#">Laptops</a></li>
                 <li><a href="#">TV</a></li>
@@ -100,68 +102,69 @@ include 'delete_product.php';
         </div>
     </aside>
     <section class="container">
-    <form action="" method="POST">
-        <div class="username">
-            <h3>Welcome, <?php echo $user?></h3>
-            <div class="avatar">
-                <img src="images/avatar.png" alt="Avatar" />
+        <form action="" method="POST">
+            <div class="username">
+                <h3>Welcome, <?php echo $user ?></h3>
+                <div class="avatar">
+                    <img src="images/avatar.png" alt="Avatar" />
+                </div>
             </div>
-        </div>
-        <div class="options">
-            <div class="add_delete">
-                <a href="#" class="btn" id="addBtn">Add</a>
-                <input href="javascript:void(0)" class="btn red disabled" name="delete22" type="submit" value="Delete">            </div>
+            <div class="options">
+                <div class="add_delete">
+                    <a href="#" class="btn" id="addBtn">Add</a>
+                    <input href="javascript:void(0)" class="btn red disabled" name="delete22" type="submit" value="Delete">
+                </div>
 
-            <input type="search" class="search" placeholder="Search .." />
-            <select name="search" id="search">
-                <option value="search" selected>Search By</option>
-                <option value="id">ID</option>
-                <option value="name">Name</option>
-                <option value="brand">Brand</option>
-                <option value="category">Category</option>
-            </select>
-        </div>
-        <div class="products">
-            <table>
-                <tr>
-                    <th></th>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Brand</th>
-                    <th>Qty</th>
-                    <th>Price</th>
-                    <th>Category</th>
-                    <th></th>
-                    <th></th>
-                </tr>
-                <?php foreach ($products as $product) { ?>
-
-
+                <input type="search" class="search" placeholder="Search .." />
+                <select name="search" id="search">
+                    <option value="search" selected>Search By</option>
+                    <option value="id">ID</option>
+                    <option value="name">Name</option>
+                    <option value="brand">Brand</option>
+                    <option value="category">Category</option>
+                </select>
+            </div>
+            <div class="products">
+                <table>
                     <tr>
-                        <td><input type="checkbox"  name="checkbox[]" class="item"  value="<?php echo $product['id'];?>" /></td>
-                        <td class="id"><?php echo $product['id']; ?></td>
-                        <td class="name"><?php echo $product['name']; ?></td>
-                        <td class="brand"><?php echo $product['brand']; ?></td>
-                        <td class="qty"><?php echo $product['qty']; ?></td>
-                        <td class="price"><?php echo $product['price']; ?></td>
-                        <td class="category"><?php echo $product['category']; ?></td>
-                        <td class="image" style="display: none;"><img src="images/<?php echo $product['image']; ?>" alt=""></td>
-                        <td class="description" style="display: none;"><?php echo $product['description']; ?></td>
-
-                        <td>
-                            <div>
-                                <a href="#"><img src="images/edit.svg" alt="edit" class="editBtn"  /></a>
-                                <a href="#"><img src="images/delete.svg" alt="delete" /></a>
-                            </div>
-                        </td>
-                        <td class="moreInfo">
-                            <a href="#"><img src="images/arrow.svg" alt="arrow" /></a>
-                        </td>
+                        <th></th>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Brand</th>
+                        <th>Qty</th>
+                        <th>Price</th>
+                        <th>Category</th>
+                        <th></th>
+                        <th></th>
                     </tr>
-                <?php } ?>
-            </table>
-        </div>
-                </form>
+                    <?php foreach ($products as $product) { ?>
+
+
+                        <tr>
+                            <td><input type="checkbox" name="checkbox[]" class="item" value="<?php echo $product['id']; ?>" /></td>
+                            <td class="id"><?php echo $product['id']; ?></td>
+                            <td class="name"><?php echo $product['name']; ?></td>
+                            <td class="brand"><?php echo $product['brand']; ?></td>
+                            <td class="qty"><?php echo $product['qty']; ?></td>
+                            <td class="price"><?php echo $product['price']; ?></td>
+                            <td class="category"><?php echo $product['category']; ?></td>
+                            <td class="image" style="display: none;"><img src="images/<?php echo $product['image']; ?>" alt=""></td>
+                            <td class="description" style="display: none;"><?php echo $product['description']; ?></td>
+
+                            <td>
+                                <div>
+                                    <a href="#"><img src="images/edit.svg" alt="edit" class="editBtn" /></a>
+                                    <a href="#"><img src="images/delete.svg" alt="delete" /></a>
+                                </div>
+                            </td>
+                            <td class="moreInfo">
+                                <a href="#"><img src="images/arrow.svg" alt="arrow" /></a>
+                            </td>
+                        </tr>
+                    <?php } ?>
+                </table>
+            </div>
+        </form>
     </section>
     <div id="addModal" class="modal">
         <!-- Modal content -->
@@ -207,7 +210,7 @@ include 'delete_product.php';
                     <label for="uploadImg"><img src="images/upload.svg" alt="upload icon" style="display: inline; width: 90px; cursor: pointer" /></label>
                     <span id="file-chosen">No file chosen</span>
                 </div>
-                <input type="submit" value="submit" name="submit"/>
+                <input type="submit" value="submit" name="submit" />
             </form>
         </div>
     </div>
@@ -219,19 +222,19 @@ include 'delete_product.php';
             <form action="index.php" method="POST" class="editForm">
                 <div>
                     <label for="p_id">Product ID:</label>
-                    <input type="text" name="p_id" readonly/>
+                    <input type="text" name="p_id" readonly />
                 </div>
                 <div>
                     <label for="p_name">Product Name:</label>
-                    <input type="text" name="p_name"/>
+                    <input type="text" name="p_name" />
                 </div>
                 <div>
                     <label for="p_brand">Brand:</label>
-                    <input type="text" name="p_brand"/>
+                    <input type="text" name="p_brand" />
                 </div>
                 <div>
                     <label for="p_category">Category:</label>
-                    <select name="p_category" id="category" >
+                    <select name="p_category" id="category">
                         <option value="select">Select</option>
                         <option value="Laptops">Laptops</option>
                         <option value="Phones">Phones</option>
@@ -239,15 +242,15 @@ include 'delete_product.php';
                 </div>
                 <div>
                     <label for="qty">Quantity</label>
-                    <input type="number" name="p_qty"/>
+                    <input type="number" name="p_qty" />
                 </div>
                 <div>
                     <label for="Price">Price</label>
-                    <input type="number" name="p_price"/>
+                    <input type="number" name="p_price" />
                 </div>
                 <div>
                     <label for="description">Description</label>
-                    <textarea name="description" cols="30" rows="10" ></textarea>
+                    <textarea name="description" cols="30" rows="10"></textarea>
                 </div>
 
                 <div>
@@ -259,7 +262,7 @@ include 'delete_product.php';
                     <label for="editImg"><img src="images/upload.svg" alt="upload icon" style="display: inline; width: 90px; cursor: pointer" /></label>
                     <span id="file-chosen">No file chosen</span>
                 </div>
-                <input type="submit" value="Edit" name="submit_edit"/>
+                <input type="submit" value="Edit" name="submit_edit" />
             </form>
         </div>
     </div>
@@ -271,13 +274,13 @@ include 'delete_product.php';
             <div>
 
                 <div>
-                    <img src="" alt="Product Image" class="product-image"/>
+                    <img src="" alt="Product Image" class="product-image" />
                 </div>
                 <div>
                     <h2 class="product-title"></h2>
                     <p class="product-brand"></p>
                     <p class="product-parag">
-                        
+
                     </p>
                     <div>
                         <div>
@@ -296,6 +299,9 @@ include 'delete_product.php';
     </div>
 
 </body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
 <script src="js/main.js"></script>
+<script src="js/notify.js"></script>
 
 </html>

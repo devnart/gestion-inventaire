@@ -193,7 +193,42 @@ infoRow.forEach((e) => {
 // Regex Validation
 
 const numberPattern = /^\d+$/
+const textPattern = /^[a-zA-Z0-9 ]*$/
 
-function validate(){
+var form = document.querySelector("#addModal")
+
+form.addEventListener('submit',(e)=>{
+
+  var error = 0;
   
-}
+  if(error == 0) {
+
+    console.log("Hello")
+    inputNum = form.querySelectorAll('input[type="number"]')
+    inputNum.forEach((e) =>{
+      if(!numberPattern.test(e.value)){
+        alert("Please insert a correct " + e.previousElementSibling.innerHTML)
+        error++;
+      }
+
+    })
+    inputText = form.querySelectorAll('input[type="text"]')
+    console.log(inputText)
+    inputText.forEach(e => {
+      if(!textPattern.test(e.value)){
+        console.log(e)
+        alert("Please insert a correct " + e.previousElementSibling.innerHTML)
+        error++;
+      }
+    })
+
+  }
+  if (error > 0) {
+    e.preventDefault();
+  }
+
+
+  
+
+  
+})
