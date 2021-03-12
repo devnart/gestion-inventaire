@@ -1,11 +1,13 @@
 <?php
+session_start();
 
 include('db_connect.php');
-
 if (isset($_POST['submit'])) {
   $username = $_POST["user"];
   $password = $_POST["password"];
 
+  $_SESSION['username'] = $username;
+  
   $sql = "SELECT * FROM login where username = '$username' and password = '$password'";
 
   $result = mysqli_query($connection, $sql) or die(mysqli_error($connection));
@@ -13,7 +15,11 @@ if (isset($_POST['submit'])) {
   $count = mysqli_num_rows($result);
 
   if ($count == 1) {
+    $_SESSION['loggedIn'] = true;
+
     header('Location: index.php');
+ 
+    
   } else {
     echo "<h1> Login failed. Invalid username or password.</h1>";
   }

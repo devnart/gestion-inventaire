@@ -1,6 +1,14 @@
 <?php
+session_start();
 
+if($_SESSION['loggedIn']){
+    
+}else {
+    
+    header('Location: login.php');
+}
 
+$user = $_SESSION['username'];
 include('db_connect.php');
 
 // write query for all pizzas
@@ -12,24 +20,46 @@ $result = mysqli_query($connection, $sql) or die(mysqli_error($connection));
 // fetch the resulting rows as an array
 $products = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
-    if(isset($_POST['submit'])) {
-        $id = $_POST['p_id'];
-        $name = $_POST['p_name'];
-        $brand = $_POST['p_brand'];
-        $category = $_POST['p_category'];
-        $qty = $_POST['p_qty'];
-        $price = $_POST['p_price'];
-        $description = $_POST['description'];
-        $image = $_POST['image'];
 
-        $sql = "INSERT INTO product(id,name,brand,category,qty,price,description,image) VALUES('$id','$name','$brand','$category','$qty','$price','$description','$image')";
+if (isset($_POST['submit'])) {
+    $id = $_POST['p_id'];
+    $name = $_POST['p_name'];
+    $brand = $_POST['p_brand'];
+    $category = $_POST['p_category'];
+    $qty = $_POST['p_qty'];
+    $price = $_POST['p_price'];
+    $description = $_POST['description'];
+    $image = $_POST['image'];
 
-        if(mysqli_query($connection,$sql)){
-            header('Location: index.php');
-        }else {
-            echo 'Query Error' . mysqli_error($connection);
-        }
+    $sql = "INSERT INTO product(id,name,brand,category,qty,price,description,image) VALUES('$id','$name','$brand','$category','$qty','$price','$description','$image')";
+
+    if (mysqli_query($connection, $sql)) {
+        header('Location: index.php');
+    } else {
+        echo 'Query Error' . mysqli_error($connection);
     }
+    
+}
+if (isset($_POST['submit_edit'])) {
+    $id = $_POST['p_id'];
+    $name = $_POST['p_name'];
+    $brand = $_POST['p_brand'];
+    $category = $_POST['p_category'];
+    $qty = $_POST['p_qty'];
+    $price = $_POST['p_price'];
+    $description = $_POST['description'];
+    $image = $_POST['image'];
+
+
+    $sql = "UPDATE product SET name='$name',brand='$brand',category='$category',qty='$qty',price='$price',description='$description',image='$image' WHERE id=$id";
+
+    if (mysqli_query($connection, $sql)) {
+        header('Location: index.php');
+    } else {
+        echo 'Query Error ' . mysqli_error($connection);
+    }
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -47,13 +77,14 @@ $products = mysqli_fetch_all($result, MYSQLI_ASSOC);
         <div class="logo">
             <img src="images/logo_light.svg" alt="Dashboard Logo" />
         </div>
+        <div class="burger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
         <div class="side-menu">
-            <a href="#">
-                <h2>dashboard</h2>
-            </a>
-            <a href="#">
-                <h2>Categories</h2>
-            </a>
+            <a href="#"><h2>dashboard</h2></a>
+            <a href="#"><h2>Categories</h2></a>
             <ul>
                 <li><a href="#">Laptops</a></li>
                 <li><a href="#">TV</a></li>
@@ -64,22 +95,20 @@ $products = mysqli_fetch_all($result, MYSQLI_ASSOC);
                 <li><a href="#">Laptops</a></li>
             </ul>
         </div>
-        <div class="burger">
-            <div class="line1"></div>
-            <div class="line2"></div>
-            <div class="line3"></div>
-        </div>
     </aside>
     <section class="container">
         <div class="username">
-            <h3>Welcome, Admin</h3>
+            <h3>Welcome, <?php echo $user?></h3>
             <div class="avatar">
                 <img src="images/avatar.png" alt="Avatar" />
             </div>
         </div>
         <div class="options">
-            <a href="#" class="btn" id="addBtn">Add</a>
-            <a href="javascript:void(0)" class="btn red disabled">Delete</a>
+            <div class="add_delete">
+                <a href="#" class="btn" id="addBtn">Add</a>
+                <a href="javascript:void(0)" class="btn red disabled">Delete</a>
+            </div>
+
             <input type="search" class="search" placeholder="Search .." />
             <select name="search" id="search">
                 <option value="search" selected>Search By</option>
@@ -107,15 +136,18 @@ $products = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
                     <tr>
                         <td><input type="checkbox" class="item" /></td>
-                        <td><?php echo $product['id']; ?></td>
-                        <td><?php echo $product['name']; ?></td>
-                        <td><?php echo $product['brand']; ?></td>
-                        <td><?php echo $product['qty']; ?></td>
-                        <td><?php echo $product['price']; ?></td>
-                        <td><?php echo $product['category']; ?></td>
+                        <td class="id"><?php echo $product['id']; ?></td>
+                        <td class="name"><?php echo $product['name']; ?></td>
+                        <td class="brand"><?php echo $product['brand']; ?></td>
+                        <td class="qty"><?php echo $product['qty']; ?></td>
+                        <td class="price"><?php echo $product['price']; ?></td>
+                        <td class="category"><?php echo $product['category']; ?></td>
+                        <td class="image" style="display: none;"><img src="images/<?php echo $product['image']; ?>" alt=""></td>
+                        <td class="description" style="display: none;"><?php echo $product['description']; ?></td>
+
                         <td>
                             <div>
-                                <a href="#"><img src="images/edit.svg" alt="edit" class="editBtn" /></a>
+                                <a href="#"><img src="images/edit.svg" alt="edit" class="editBtn"  /></a>
                                 <a href="#"><img src="images/delete.svg" alt="delete" /></a>
                             </div>
                         </td>
@@ -135,7 +167,7 @@ $products = mysqli_fetch_all($result, MYSQLI_ASSOC);
             <form action="index.php" method="POST">
                 <div>
                     <label for="p_id">Product ID:</label>
-                    <input type="text" name="p_id" id="p_id"/>
+                    <input type="text" name="p_id" id="p_id" />
                 </div>
                 <div>
                     <label for="p_name">Product Name:</label>
@@ -155,11 +187,11 @@ $products = mysqli_fetch_all($result, MYSQLI_ASSOC);
                 </div>
                 <div>
                     <label for="qty">Quantity</label>
-                    <input type="number" name="p_qty" id="qty"/>
+                    <input type="number" name="p_qty" id="qty" />
                 </div>
                 <div>
                     <label for="price">Price</label>
-                    <input type="number" name="p_price" id="price"/>
+                    <input type="number" name="p_price" id="price" />
                 </div>
                 <div>
                     <label for="description">Description</label>
@@ -180,22 +212,22 @@ $products = mysqli_fetch_all($result, MYSQLI_ASSOC);
         <div class="modal-content">
             <span class="close">&times;</span>
             <h2>edit product</h2>
-            <form action="" method="">
+            <form action="index.php" method="POST" class="editForm">
                 <div>
                     <label for="p_id">Product ID:</label>
-                    <input type="text" />
+                    <input type="text" name="p_id" readonly/>
                 </div>
                 <div>
                     <label for="p_name">Product Name:</label>
-                    <input type="text" />
+                    <input type="text" name="p_name"/>
                 </div>
                 <div>
                     <label for="p_brand">Brand:</label>
-                    <input type="text" />
+                    <input type="text" name="p_brand"/>
                 </div>
                 <div>
                     <label for="p_category">Category:</label>
-                    <select name="category" id="category">
+                    <select name="p_category" id="category" >
                         <option value="select">Select</option>
                         <option value="Laptops">Laptops</option>
                         <option value="Phones">Phones</option>
@@ -203,26 +235,27 @@ $products = mysqli_fetch_all($result, MYSQLI_ASSOC);
                 </div>
                 <div>
                     <label for="qty">Quantity</label>
-                    <input type="number" />
+                    <input type="number" name="p_qty"/>
                 </div>
                 <div>
                     <label for="Price">Price</label>
-                    <input type="number" />
+                    <input type="number" name="p_price"/>
                 </div>
                 <div>
                     <label for="description">Description</label>
-                    <textarea name="description" cols="30" rows="10"></textarea>
+                    <textarea name="description" cols="30" rows="10" ></textarea>
                 </div>
 
                 <div>
                     <div>
+                        <img id='imgThumb' src="" alt="thumbnail">
                     </div>
-                    <input type="file" id="editImg" hidden />
+                    <input type="file" id="editImg" hidden name="image" />
 
                     <label for="editImg"><img src="images/upload.svg" alt="upload icon" style="display: inline; width: 90px; cursor: pointer" /></label>
                     <span id="file-chosen">No file chosen</span>
                 </div>
-                <input type="submit" value="Edit" />
+                <input type="submit" value="Edit" name="submit_edit"/>
             </form>
         </div>
     </div>
@@ -234,30 +267,30 @@ $products = mysqli_fetch_all($result, MYSQLI_ASSOC);
             <div>
 
                 <div>
-                    <img src="images/<?php echo $products[0]['image']; ?>" alt="Iphone" />
+                    <img src="" alt="Product Image" class="product-image"/>
                 </div>
                 <div>
-                    <h2><?php echo $products[0]['name']; ?></h2>
-                    <p><?php echo $products[0]['brand']; ?></p>
-                    <p>
-                    <?php echo $products[0]['description']; ?>
+                    <h2 class="product-title"></h2>
+                    <p class="product-brand"></p>
+                    <p class="product-parag">
+                        
                     </p>
                     <div>
                         <div>
                             <p>Qty</p>
-                            <h3><?php echo $products[0]['qty']; ?>pc</h3>
+                            <h3 class="product-qty"></h3>
                         </div>
                         <div>
                             <p>Price</p>
-                            <h3><?php echo $products[0]['price']; ?>$</h3>
+                            <h3 class="product-price"></h3>
                         </div>
                     </div>
                 </div>
-                
+
             </div>
         </div>
     </div>
-   
+
 </body>
 <script src="js/main.js"></script>
 
