@@ -190,4 +190,10 @@ infoRow.forEach((e) => {
   };
 });
 
-// Grab Info
+// Regex Validation
+
+const numberPattern = /^\d+$/
+
+function validate(){
+  
+}

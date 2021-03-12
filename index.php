@@ -203,7 +203,7 @@ if (isset($_POST['submit_edit'])) {
                     <label for="uploadImg"><img src="images/upload.svg" alt="upload icon" style="display: inline; width: 90px; cursor: pointer" /></label>
                     <span id="file-chosen">No file chosen</span>
                 </div>
-                <input type="submit" value="submit" name="submit" />
+                <input type="submit" value="submit" name="submit"/>
             </form>
         </div>
     </div>
