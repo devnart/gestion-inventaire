@@ -61,6 +61,9 @@ if (isset($_POST['submit_edit'])) {
 }
 
 ?>
+<?php 
+include 'delete_product.php';
+?> 
 <!DOCTYPE html>
 <html lang="en">
 
@@ -97,6 +100,7 @@ if (isset($_POST['submit_edit'])) {
         </div>
     </aside>
     <section class="container">
+    <form action="" method="POST">
         <div class="username">
             <h3>Welcome, <?php echo $user?></h3>
             <div class="avatar">
@@ -106,8 +110,7 @@ if (isset($_POST['submit_edit'])) {
         <div class="options">
             <div class="add_delete">
                 <a href="#" class="btn" id="addBtn">Add</a>
-                <a href="javascript:void(0)" class="btn red disabled">Delete</a>
-            </div>
+                <input href="javascript:void(0)" class="btn red disabled" name="delete22" type="submit" value="Delete">            </div>
 
             <input type="search" class="search" placeholder="Search .." />
             <select name="search" id="search">
@@ -135,7 +138,7 @@ if (isset($_POST['submit_edit'])) {
 
 
                     <tr>
-                        <td><input type="checkbox" class="item" /></td>
+                        <td><input type="checkbox"  name="checkbox[]" class="item"  value="<?php echo $product['id'];?>" /></td>
                         <td class="id"><?php echo $product['id']; ?></td>
                         <td class="name"><?php echo $product['name']; ?></td>
                         <td class="brand"><?php echo $product['brand']; ?></td>
@@ -158,6 +161,7 @@ if (isset($_POST['submit_edit'])) {
                 <?php } ?>
             </table>
         </div>
+                </form>
     </section>
     <div id="addModal" class="modal">
         <!-- Modal content -->

@@ -3,7 +3,7 @@ var rows = document.querySelectorAll("tr");
 items.forEach((item) => {
   var row = item.parentElement.parentElement;
   deleteBtn = document.querySelector(
-    "body > section > div.options > div > a.btn.red.disabled"
+    "body > section > form > div.options > div > input.btn.red.disabled"
   );
   item.addEventListener("change", () => {
     if (item.checked) {
