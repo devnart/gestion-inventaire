@@ -137,7 +137,7 @@ include 'delete_product.php';
                 <a href="#" class="btn" id="addBtn">Add</a>
                 <input href="javascript:void(0)" class="btn red disabled" name="delete22" type="submit" value="Delete">            </div>
 
-            <input type="search" class="search" placeholder="Search .." />
+            <input type="search" class="search" name="search_p" placeholder="Search .." />
             <select name="search" id="search">
                 <option value="search" selected>Search By</option>
                 <option value="id">ID</option>

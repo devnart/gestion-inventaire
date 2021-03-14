@@ -82,15 +82,9 @@ if (isset($_POST['submit_edit'])) {
 //      header("Location: index.php");
 // }
 ?>
-<<<<<<< HEAD
 <?php 
 include 'delete_product.php';
 ?> 
-=======
-<?php
-include 'delete_product.php';
-?>
->>>>>>> 5c4cb2ca280eec700c0ca6d608ebe1544d80dd88
 <!DOCTYPE html>
 <html lang="en">
 
@@ -131,71 +125,7 @@ include 'delete_product.php';
         </div>
     </aside>
     <section class="container">
-<<<<<<< HEAD
-    <form action="search.php" method="POST">
-        <div class="username">
-            <h3>Welcome, <?php echo $user?></h3>
-            <div class="avatar">
-                <img src="images/avatar.png" alt="Avatar" />
-            </div>
-        </div>
-        <div class="options">
-            <div class="add_delete">
-                <a href="#" class="btn" id="addBtn">Add</a>
-                <input href="javascript:void(0)" class="btn red disabled" name="delete22" type="submit" value="Delete">            </div>
-
-            <input type="search" class="search" name="search_p" placeholder="Search .." />
-            <select name="search" id="search">
-                <option value="search" selected>Search By</option>
-                <option value="id">ID</option>
-                <option value="name">Name</option>
-                <option value="brand">Brand</option>
-                <option value="category">Category</option>
-            </select>
-        </div>
-        <div class="products">
-            <table>
-                <tr>
-                    <th></th>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Brand</th>
-                    <th>Qty</th>
-                    <th>Price</th>
-                    <th>Category</th>
-                    <th></th>
-                    <th></th>
-                </tr>
-                <?php foreach ($products as $product) { ?>
-
-
-                    <tr>
-                        <td><input type="checkbox"  name="checkbox[]" class="item"  value="<?php echo $product['id'];?>" /></td>
-                        <td class="id"><?php echo $product['id']; ?></td>
-                        <td class="name"><?php echo $product['name']; ?></td>
-                        <td class="brand"><?php echo $product['brand']; ?></td>
-                        <td class="qty"><?php echo $product['qty']; ?></td>
-                        <td class="price"><?php echo $product['price']; ?></td>
-                        <td class="category"><?php echo $product['category']; ?></td>
-                        <td class="image" style="display: none;"><img src="images/<?php echo $product['image']; ?>" alt=""></td>
-                        <td class="description" style="display: none;"><?php echo $product['description']; ?></td>
-
-                        <td>
-                            <div>
-                                <a href="#"><img src="images/edit.svg" alt="edit" class="editBtn"  /></a>
-                                <a href="javascript:delete_id(<?php echo $product['id']; ?>)"  ><img src="images/delete.svg" alt="delete" /></a>
-                            </div>
-                        </td>
-                        <td class="moreInfo">
-                            <a href="#"><img src="images/arrow.svg" alt="arrow" /></a>
-                        </td>
-                    </tr>
-                <?php } ?>
-            </table>
-        </div>
-                </form>
-=======
-        <form action="" method="POST">
+        <form action="search.php" method="POST">
             <div class="username">
                 <h3>Welcome, <?php echo $user ?></h3>
                 <div class="avatar">
@@ -208,7 +138,7 @@ include 'delete_product.php';
                     <input href="javascript:void(0)" class="btn red disabled" name="delete22" type="submit" value="Delete">
                 </div>
 
-                <input type="search" class="search" placeholder="Search .." />
+                <input type="search" class="search" name="search_p" placeholder="Search .." />
                 <select name="search" id="search">
                     <option value="search" selected>Search By</option>
                     <option value="id">ID</option>
@@ -258,7 +188,6 @@ include 'delete_product.php';
                 </table>
             </div>
         </form>
->>>>>>> 5c4cb2ca280eec700c0ca6d608ebe1544d80dd88
     </section>
     <div id="addModal" class="modal">
         <!-- Modal content -->

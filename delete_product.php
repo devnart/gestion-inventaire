@@ -1,37 +1,28 @@
 <?php 
 include 'db_connect.php';
-<<<<<<< HEAD
 
 if(isset($_POST['checkbox'])){
 if(isset($_POST['delete22']))
 {
     $checkbox = $_POST['checkbox'];
-=======
 if(isset($_POST['delete22']))
 {
     $checkbox = $_POST['checkbox'];
     
->>>>>>> 5c4cb2ca280eec700c0ca6d608ebe1544d80dd88
     for($i=0;$i<count($checkbox);$i++){
 
         $del_id = $checkbox[$i];
         $sql = "DELETE FROM product WHERE id='$del_id'";
-<<<<<<< HEAD
         
-=======
->>>>>>> 5c4cb2ca280eec700c0ca6d608ebe1544d80dd88
         if (mysqli_query($connection, $sql)) {
             header('Location: index.php');
 
         } else {
             echo 'Query Error ' . mysqli_error($connection);
         }
-<<<<<<< HEAD
     }
-=======
         
->>>>>>> 5c4cb2ca280eec700c0ca6d608ebe1544d80dd88
-        }
+        }}}
         
     // if($delete=='')
     // {
@@ -51,5 +42,5 @@ if(isset($_POST['delete22']))
     //     $dbb->exec($sql);
     //     $i++;
     // }
-    }
+    
 ?>
