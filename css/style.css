@@ -329,6 +329,7 @@ aside .side-menu li {
   padding: 10px 30px;
   font-weight: 500;
   border-radius: 5px;
+  border-style: none;
 }
 
 .red {

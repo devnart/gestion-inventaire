@@ -11,8 +11,9 @@ if($_SESSION['loggedIn']){
 $user = $_SESSION['username'];
 include('db_connect.php');
 
-// write query for all pizzas
-$sql = 'SELECT * FROM product ORDER BY date DESC';
+$search=$_POST['search_p'];
+$searchby=$_POST['search'];
+$sql = 'SELECT * FROM product where '.$searchby.' LIKE "'.$search.'" ';
 
 // POST the result set (set of rows)
 $result = mysqli_query($connection, $sql) or die(mysqli_error($connection));
@@ -69,6 +70,7 @@ if (isset($_POST['submit_edit'])) {
     $description = $_POST['description'];
     $image = $_POST['image'];
 
+
     $sql = "UPDATE product SET name='$name',brand='$brand',category='$category',qty='$qty',price='$price',description='$description',image='$image' WHERE id=$id";
 
     if (mysqli_query($connection, $sql)) {
@@ -77,12 +79,12 @@ if (isset($_POST['submit_edit'])) {
         echo 'Query Error ' . mysqli_error($connection);
     }
 }
-// if(isset($_GET['delete_id']))
-// {
-//      $sql_query="DELETE FROM product WHERE id=".$_GET['delete_id'];
-//      mysql_query($sql_query);
-//      header("Location: index.php");
-// }
+if(isset($_GET['delete_id']))
+{
+     $sql_query="DELETE FROM product WHERE id=".$_GET['delete_id'];
+     mysql_query($sql_query);
+     header("Location: index.php");
+}
 ?>
 <?php 
 include 'delete_product.php';
@@ -109,7 +111,7 @@ include 'delete_product.php';
             <div class="line3"></div>
         </div>
         <div class="side-menu">
-            <a href="#"><h2>dashboard</h2></a>
+            <a href="index.php"><h2>dashboard</h2></a>
             <a href="#"><h2>Categories</h2></a>
             <ul>
                 <li><a href="#">Laptops</a></li>
@@ -123,7 +125,7 @@ include 'delete_product.php';
         </div>
     </aside>
     <section class="container">
-    <form action="search.php" method="POST">
+    <form action="" method="POST">
         <div class="username">
             <h3>Welcome, <?php echo $user?></h3>
             <div class="avatar">
@@ -135,7 +137,7 @@ include 'delete_product.php';
                 <a href="#" class="btn" id="addBtn">Add</a>
                 <input href="javascript:void(0)" class="btn red disabled" name="delete22" type="submit" value="Delete">            </div>
 
-            <input type="search" class="search" name="search_p" placeholder="Search .." />
+            <input type="search" class="search" placeholder="Search .." />
             <select name="search" id="search">
                 <option value="search" selected>Search By</option>
                 <option value="id">ID</option>
