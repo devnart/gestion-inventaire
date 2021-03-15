@@ -13,7 +13,6 @@ items.forEach((item) => {
       row.classList.toggle("selected");
       rows.forEach((e) => {
         if (e.classList.contains("selected") == false) {
-
           deleteBtn.classList.add("disabled");
         }
       });
@@ -142,6 +141,13 @@ editBtn.forEach((e) => {
       ".editForm label+textarea"
     )[0].value = pr_description;
     document.querySelector("#imgThumb").src = pr_image;
+    document.querySelectorAll(".editForm label+input")[4].value = pr_price;
+
+    var fileInput = document.querySelector("#editImg");
+    var filename = pr_image.split("/").pop();
+
+    spanImage = document.querySelector("#file-chosen-edit");
+    spanImage.textContent = filename;
   };
 });
 span[1].onclick = function () {
@@ -150,31 +156,34 @@ span[1].onclick = function () {
   content.style.filter = "none";
 };
 
-infoBtn.forEach((e) => {
-  e.onclick = function () {
-    content.style.filter = "blur(15px)";
-    aside.style.filter = "blur(15px)";
-    info.style.transform = "translateY(0)";
 
-    tr = this.parentElement;
 
-    pr_name = tr.children[2].innerHTML;
-    pr_brand = tr.children[3].innerHTML;
-    pr_qty = tr.children[4].innerHTML;
-    pr_price = tr.children[5].innerHTML;
-    pr_category = tr.children[6].innerHTML;
-    pr_image = tr.children[7].firstElementChild.src;
-    pr_description = tr.children[8].innerHTML;
+  infoBtn.forEach((e) => {
+    e.onclick = function () {
+      content.style.filter = "blur(15px)";
+      aside.style.filter = "blur(15px)";
+      info.style.transform = "translateY(0)";
+  
+      tr = this.parentElement;
+  
+      pr_name = tr.children[2].innerHTML;
+      pr_brand = tr.children[3].innerHTML;
+      pr_qty = tr.children[4].innerHTML;
+      pr_price = tr.children[5].innerHTML;
+      pr_category = tr.children[6].innerHTML;
+      pr_image = tr.children[7].firstElementChild.src;
+      pr_description = tr.children[8].innerHTML;
+  
+      //info modal
+      document.querySelector(".product-image").src = pr_image;
+      document.querySelector(".product-title").innerHTML = pr_name;
+      document.querySelector(".product-brand").innerHTML = pr_brand;
+      document.querySelector(".product-parag").innerHTML = pr_description;
+      document.querySelector(".product-qty").innerHTML = pr_qty;
+      document.querySelector(".product-price").innerHTML = pr_price;
+    };
+  });
 
-    //info modal
-    document.querySelector(".product-image").src = pr_image;
-    document.querySelector(".product-title").innerHTML = pr_name;
-    document.querySelector(".product-brand").innerHTML = pr_brand;
-    document.querySelector(".product-parag").innerHTML = pr_description;
-    document.querySelector(".product-qty").innerHTML = pr_qty;
-    document.querySelector(".product-price").innerHTML = pr_price;
-  };
-});
 
 span[2].onclick = function () {
   info.style.transform = "translateY(-100%)"; // edit modal
@@ -187,48 +196,56 @@ infoRow.forEach((e) => {
     content.style.filter = "blur(15px)";
     aside.style.filter = "blur(15px)";
     info.style.transform = "translateY(0)";
+    
+    tr = this.parentElement;
+  
+      pr_name = tr.children[2].innerHTML;
+      pr_brand = tr.children[3].innerHTML;
+      pr_qty = tr.children[4].innerHTML;
+      pr_price = tr.children[5].innerHTML;
+      pr_category = tr.children[6].innerHTML;
+      pr_image = tr.children[7].firstElementChild.src;
+      pr_description = tr.children[8].innerHTML;
+  
+      //info modal
+      document.querySelector(".product-image").src = pr_image;
+      document.querySelector(".product-title").innerHTML = pr_name;
+      document.querySelector(".product-brand").innerHTML = pr_brand;
+      document.querySelector(".product-parag").innerHTML = pr_description;
+      document.querySelector(".product-qty").innerHTML = pr_qty;
+      document.querySelector(".product-price").innerHTML = pr_price;
   };
 });
 
 // Regex Validation
 
-const numberPattern = /^\d+$/
-const textPattern = /^[a-zA-Z0-9 ]*$/
+const numberPattern = /^\d+$/;
+const textPattern = /^[a-zA-Z0-9 ]*$/;
 
-var form = document.querySelector("#addModal")
+var form = document.querySelector("#addModal");
 
-form.addEventListener('submit',(e)=>{
-
+form.addEventListener("submit", (e) => {
   var error = 0;
-  
-  if(error == 0) {
 
-    console.log("Hello")
-    inputNum = form.querySelectorAll('input[type="number"]')
-    inputNum.forEach((e) =>{
-      if(!numberPattern.test(e.value)){
-        alert("Please insert a correct " + e.previousElementSibling.innerHTML)
+  if (error == 0) {
+    inputText = form.querySelectorAll('input[type="text"]');
+    inputNum = form.querySelectorAll('input[type="number"]');
+
+    inputText.forEach((e) => {
+      if (!textPattern.test(e.value)) {
+        alert("Please insert a correct " + e.previousElementSibling.innerHTML);
         error++;
       }
+    });
 
-    })
-    inputText = form.querySelectorAll('input[type="text"]')
-    console.log(inputText)
-    inputText.forEach(e => {
-      if(!textPattern.test(e.value)){
-        console.log(e)
-        alert("Please insert a correct " + e.previousElementSibling.innerHTML)
+    inputNum.forEach((e) => {
+      if (!numberPattern.test(e.value)) {
+        alert("Please insert a correct " + e.previousElementSibling.innerHTML);
         error++;
       }
-    })
-
+    });
   }
   if (error > 0) {
     e.preventDefault();
   }
-
-
-  
-
-  
-})
+});

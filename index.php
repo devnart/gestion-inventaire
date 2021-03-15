@@ -35,7 +35,7 @@ if (isset($_POST['submit'])) {
     if (mysqli_query($connection, $sql)) {
         header('Location: index.php');
     } else {
-        echo 'Query Error' . mysqli_error($connection);
+        echo 'Query Error ' . mysqli_error($connection);
     }
 }
 if (isset($_POST['submit_edit'])) {
@@ -51,6 +51,18 @@ if (isset($_POST['submit_edit'])) {
 
     $sql = "UPDATE product SET name='$name',brand='$brand',category='$category',qty='$qty',price='$price',description='$description',image='$image' WHERE id=$id";
 
+    if (mysqli_query($connection, $sql)) {
+        header('Location: index.php');
+    } else {
+        echo 'Query Error ' . mysqli_error($connection);
+    }
+}
+
+// delete single product
+
+if (isset($_POST['deleteSingle'])) {
+    $single = $_POST['deleteSingle'];
+    $sql = "DELETE FROM product WHERE id='$single'";
     if (mysqli_query($connection, $sql)) {
         header('Location: index.php');
     } else {
@@ -102,7 +114,7 @@ include 'delete_product.php';
         </div>
     </aside>
     <section class="container">
-        <form action="" method="POST">
+        <form action="index.php" method="POST">
             <div class="username">
                 <h3>Welcome, <?php echo $user ?></h3>
                 <div class="avatar">
@@ -153,16 +165,21 @@ include 'delete_product.php';
 
                             <td>
                                 <div>
+
                                     <a href="#"><img src="images/edit.svg" alt="edit" class="editBtn" /></a>
-                                    <a href="#"><img src="images/delete.svg" alt="delete" /></a>
+                                    <label for="deleteSingle" style="cursor: pointer;">
+                                        <img src="images/delete.svg" alt="delete" />
+                                    </label>
+                                    <input type="submit" name="deleteSingle" id="deleteSingle" value="<?php echo $product['id']; ?>" hidden />
                                 </div>
                             </td>
-                            <td class="moreInfo">
+                            <td class="moreInfo"  style="cursor: pointer;">
                                 <a href="#"><img src="images/arrow.svg" alt="arrow" /></a>
                             </td>
                         </tr>
                     <?php } ?>
                 </table>
+
             </div>
         </form>
     </section>
@@ -174,19 +191,19 @@ include 'delete_product.php';
             <form action="index.php" method="POST">
                 <div>
                     <label for="p_id">Product ID:</label>
-                    <input type="text" name="p_id" id="p_id" />
+                    <input type="text" name="p_id" id="p_id" required />
                 </div>
                 <div>
                     <label for="p_name">Product Name:</label>
-                    <input type="text" name="p_name" id="p_name" />
+                    <input type="text" name="p_name" id="p_name" required />
                 </div>
                 <div>
                     <label for="p_brand">Brand:</label>
-                    <input type="text" name="p_brand" id="p_brand" />
+                    <input type="text" name="p_brand" id="p_brand" required />
                 </div>
                 <div>
                     <label for="p_category">Category:</label>
-                    <select name="p_category" id="p_category">
+                    <select name="p_category" id="p_category" required>
                         <option value="select">Select</option>
                         <option value="Laptops">Laptops</option>
                         <option value="Phones">Phones</option>
@@ -194,15 +211,15 @@ include 'delete_product.php';
                 </div>
                 <div>
                     <label for="qty">Quantity</label>
-                    <input type="number" name="p_qty" id="qty" />
+                    <input type="number" name="p_qty" id="qty" required />
                 </div>
                 <div>
                     <label for="price">Price</label>
-                    <input type="number" name="p_price" id="price" />
+                    <input type="number" name="p_price" id="price" required />
                 </div>
                 <div>
                     <label for="description">Description</label>
-                    <textarea name="description" id="description" cols="30" rows="10"></textarea>
+                    <textarea name="description" id="description" cols="30" rows="10" required></textarea>
                 </div>
                 <div>
                     <input type="file" id="uploadImg" hidden name="image" />
@@ -258,9 +275,8 @@ include 'delete_product.php';
                         <img id='imgThumb' src="" alt="thumbnail">
                     </div>
                     <input type="file" id="editImg" hidden name="image" />
-
                     <label for="editImg"><img src="images/upload.svg" alt="upload icon" style="display: inline; width: 90px; cursor: pointer" /></label>
-                    <span id="file-chosen">No file chosen</span>
+                    <span id="file-chosen-edit">No file chosen</span>
                 </div>
                 <input type="submit" value="Edit" name="submit_edit" />
             </form>
@@ -299,9 +315,7 @@ include 'delete_product.php';
     </div>
 
 </body>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
 <script src="js/main.js"></script>
-<script src="js/notify.js"></script>
 
 </html>

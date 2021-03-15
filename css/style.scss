@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500;700&display=swap");
+// @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500;700&display=swap");
 
 // css reset
 html,
@@ -357,7 +357,7 @@ section {
       align-items: center;
     }
     input {
-      border-color: #2b2b2b;
+      border: none;
       padding: 10px 20px;
       flex: 1;
       border-radius: 5px;
@@ -422,6 +422,9 @@ section {
         }
         &:nth-last-child(2) {
           padding: 0;
+          > div {
+            display: flex;
+          }
         }
         &:last-child {
           border-top-right-radius: 5px;
