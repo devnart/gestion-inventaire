@@ -1,5 +1,10 @@
 <?php 
 include 'db_connect.php';
+
+if(isset($_POST['checkbox'])){
+if(isset($_POST['delete22']))
+{
+    $checkbox = $_POST['checkbox'];
 if(isset($_POST['delete22']))
 {
     $checkbox = $_POST['checkbox'];
@@ -8,14 +13,16 @@ if(isset($_POST['delete22']))
 
         $del_id = $checkbox[$i];
         $sql = "DELETE FROM product WHERE id='$del_id'";
+        
         if (mysqli_query($connection, $sql)) {
             header('Location: index.php');
 
         } else {
             echo 'Query Error ' . mysqli_error($connection);
         }
+    }
         
-        }
+        }}}
         
     // if($delete=='')
     // {
@@ -35,5 +42,5 @@ if(isset($_POST['delete22']))
     //     $dbb->exec($sql);
     //     $i++;
     // }
-    }
+    
 ?>
