@@ -171,7 +171,7 @@ include 'delete_product.php';
 
                 <input type="search" class="search" name="search_p" placeholder="Search .." onclick="searchP()" />
                 <select name="search" id="search">
-                    <option value="search" selected>Search By</option>
+                    <option value="name" selected>Search By</option>
                     <option value="id">ID</option>
                     <option value="name">Name</option>
                     <option value="brand">Brand</option>
@@ -188,7 +188,7 @@ include 'delete_product.php';
                     </div>
 
                     <div>
-                        <h3 id="total_products">24</h3>
+                        <h3 id="total_products"></h3>
                     </div>
                 </div>
                 <div class="card">

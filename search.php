@@ -193,7 +193,7 @@ include 'delete_product.php';
                     </div>
 
                     <div>
-                        <h3 id="total_products">24</h3>
+                        <h3 id="total_products"></h3>
                     </div>
                 </div>
                 <div class="card">

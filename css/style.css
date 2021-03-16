@@ -488,7 +488,8 @@ section .options .add_delete {
 
 section .options select {
   color: #fff;
-  background-color: #6c6df5;
+  background-color: #1d1fdd;
+  border: none;
   border-radius: 5px;
   padding: 10px 20px;
 }

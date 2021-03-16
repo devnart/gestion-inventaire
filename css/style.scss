@@ -394,7 +394,8 @@ section {
     }
     select {
       color: #fff;
-      background-color: #6c6df5;
+      background-color: $primary;
+      border: none;
       border-radius: 5px;
       padding: 10px 20px;
     }
