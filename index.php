@@ -57,23 +57,34 @@ if (isset($_POST['submit_edit'])) {
         echo 'Query Error ' . mysqli_error($connection);
     }
 }
+if (isset($_POST['submit_edit'])) {
+    $id = $_POST['p_id'];
+    $name = $_POST['p_name'];
+    $brand = $_POST['p_brand'];
+    $category = $_POST['p_category'];
+    $qty = $_POST['p_qty'];
+    $price = $_POST['p_price'];
+    $description = $_POST['description'];
+    $image = $_POST['image'];
 
-// delete single product
+    $sql = "UPDATE product SET name='$name',brand='$brand',category='$category',qty='$qty',price='$price',description='$description',image='$image' WHERE id=$id";
 
-if (isset($_POST['deleteSingle'])) {
-    $single = $_POST['deleteSingle'];
-    $sql = "DELETE FROM product WHERE id='$single'";
     if (mysqli_query($connection, $sql)) {
         header('Location: index.php');
     } else {
         echo 'Query Error ' . mysqli_error($connection);
     }
 }
-
+// if(isset($_GET['delete_id']))
+// {
+//      $sql_query="DELETE FROM product WHERE id=".$_GET['delete_id'];
+//      mysql_query($sql_query);
+//      header("Location: index.php");
+// }
 ?>
-<?php 
+<?php
 include 'delete_product.php';
-?> 
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -83,6 +94,8 @@ include 'delete_product.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard</title>
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="shortcut icon" href="images/favicon.png" type="image/png">
+
 </head>
 
 <body class="light">
@@ -96,25 +109,54 @@ include 'delete_product.php';
             <div class="line3"></div>
         </div>
         <div class="side-menu">
-            <a href="#">
-                <h2>dashboard</h2>
-            </a>
-            <a href="#">
+            <div class="aside-links">
+                <div>
+                    <img src="images/dashboard.svg" alt="">
+
+                </div>
+                <h2>Dashboard</h2>
+            </div>
+            <div class="aside-links">
+                <div>
+                    <img src="images/folder.svg" alt="">
+
+                </div>
                 <h2>Categories</h2>
-            </a>
-            <ul>
-                <li><a href="#">Laptops</a></li>
-                <li><a href="#">TV</a></li>
-                <li><a href="#">Smart Phones</a></li>
-                <li><a href="#">Tables</a></li>
-                <li><a href="#">Chaires</a></li>
-                <li><a href="#">Lamp</a></li>
-                <li><a href="#">Laptops</a></li>
-            </ul>
+            </div>
+            <div class="aside-links">
+                <div>
+                    <img src="images/calendar.svg" alt="">
+
+                </div>
+                <h2>Calendar</h2>
+            </div>
+            <div class="aside-links">
+                <div>
+                    <img src="images/message.svg" alt="">
+
+                </div>
+                <h2>Message</h2>
+            </div>
+            <form action="logout.php" method="POST">
+                <div class="aside-links exit ">
+                    <label for="logout">
+                        <div>
+                            <img src="images/exit.svg" alt="">
+                        </div>
+                        <h2>Exit</h2>
+                    </label>
+
+                    <input type="submit" name="logout" id="logout" hidden>
+                </div>
+            </form>
+
         </div>
+        <!-- <div class="logout">
+            <img src="images/exit.svg" alt="logout icon">
+        </div> -->
     </aside>
     <section class="container">
-        <form action="search.php" method="POST">
+        <form action="" method="POST" id="deleteSearch">
             <div class="username">
                 <h3>Welcome, <?php echo $user ?></h3>
                 <div class="avatar">
@@ -124,10 +166,10 @@ include 'delete_product.php';
             <div class="options">
                 <div class="add_delete">
                     <a href="#" class="btn" id="addBtn">Add</a>
-                    <input href="javascript:void(0)" class="btn red disabled" name="delete22" type="submit" value="Delete">
+                    <input href="javascript:void(0)" id="delete" type="submit" class="btn red disabled" name="delete22" value="Delete" onclick="deleteP()">
                 </div>
 
-                <input type="search" class="search" name="search_p" placeholder="Search .." />
+                <input type="search" class="search" name="search_p" placeholder="Search .." onclick="searchP()" />
                 <select name="search" id="search">
                     <option value="search" selected>Search By</option>
                     <option value="id">ID</option>
@@ -135,6 +177,30 @@ include 'delete_product.php';
                     <option value="brand">Brand</option>
                     <option value="category">Category</option>
                 </select>
+            </div>
+
+            <div class="insights">
+
+                <div class="card">
+                    <div>
+                        <h4>Total Products</h4>
+                        <p>Lorem ipsum dolor sit amet.</p>
+                    </div>
+
+                    <div>
+                        <h3 id="total_products">24</h3>
+                    </div>
+                </div>
+                <div class="card">
+                    <div>
+                        <h4>Total Visitors</h4>
+                        <p>Lorem ipsum dolor sit amet.</p>
+                    </div>
+                    <div>
+                        <h3>1.5K</h3>
+                    </div>
+                </div>
+
             </div>
             <div class="products">
                 <table>
@@ -165,24 +231,30 @@ include 'delete_product.php';
 
                             <td>
                                 <div>
-
                                     <a href="#"><img src="images/edit.svg" alt="edit" class="editBtn" /></a>
-                                    <label for="deleteSingle" style="cursor: pointer;">
-                                        <img src="images/delete.svg" alt="delete" />
+                                    <a href="delete.php?r=<?php echo $product['id'] ?>"><img src="images/delete.svg" alt="delete" onclick="return confirm('Are you sure?')" /></a>
+                                    <!-- <label for="deleteSingle" style="cursor: pointer;">
+                                        
                                     </label>
-                                    <input type="submit" name="deleteSingle" id="deleteSingle" value="<?php echo $product['id']; ?>" hidden />
+                                    <input type="submit" name="deleteSingle" id="deleteSingle" value="<?php echo $product['id']; ?>" hidden/> -->
                                 </div>
                             </td>
-                            <td class="moreInfo"  style="cursor: pointer;">
+                            <td class="moreInfo" style="cursor: pointer;">
                                 <a href="#"><img src="images/arrow.svg" alt="arrow" /></a>
                             </td>
                         </tr>
                     <?php } ?>
                 </table>
-
             </div>
         </form>
     </section>
+    <div class="empty">
+        <div>
+            <img src="images/empty.svg" alt="Empty Icon">
+        </div>
+        <h2>There is no products. Click <span class="empty-span">here</span> to add</h1>
+
+    </div>
     <div id="addModal" class="modal">
         <!-- Modal content -->
         <div class="modal-content">
@@ -206,7 +278,12 @@ include 'delete_product.php';
                     <select name="p_category" id="p_category" required>
                         <option value="select">Select</option>
                         <option value="Laptops">Laptops</option>
+                        <option value="Phones">TV</option>
                         <option value="Phones">Phones</option>
+                        <option value="Phones">Chaires</option>
+                        <option value="Phones">Digital</option>
+                        <option value="Phones">Animal</option>
+                        <option value="Phones">Watches</option>
                     </select>
                 </div>
                 <div>
@@ -275,6 +352,7 @@ include 'delete_product.php';
                         <img id='imgThumb' src="" alt="thumbnail">
                     </div>
                     <input type="file" id="editImg" hidden name="image" />
+
                     <label for="editImg"><img src="images/upload.svg" alt="upload icon" style="display: inline; width: 90px; cursor: pointer" /></label>
                     <span id="file-chosen-edit">No file chosen</span>
                 </div>
@@ -315,7 +393,5 @@ include 'delete_product.php';
     </div>
 
 </body>
-
 <script src="js/main.js"></script>
-
 </html>

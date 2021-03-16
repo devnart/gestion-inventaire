@@ -141,6 +141,11 @@ a {
   text-decoration: none;
 }
 
+img {
+  height: 100%;
+  width: 100%;
+}
+
 main.container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -244,6 +249,7 @@ aside {
   color: white;
   padding: 30px;
   width: 20%;
+  z-index: 1;
 }
 
 aside .logo {
@@ -252,8 +258,8 @@ aside .logo {
 }
 
 aside .side-menu {
+  position: relative;
   margin-top: 100px;
-  margin-left: 20px;
 }
 
 @media (max-width: 480px) {
@@ -265,17 +271,76 @@ aside .side-menu {
 }
 
 aside .side-menu h2 {
-  font-size: 1.2rem;
-  text-decoration: underline;
-  margin-bottom: 10px;
+  font-size: 1.1rem;
+  line-height: 1.1;
+  margin-left: 25px;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  font-weight: 500;
 }
 
-aside .side-menu h2:first-child {
-  margin-bottom: 15px;
+aside .side-menu .aside-links {
+  -webkit-transition: 300ms;
+  transition: 300ms;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 25px;
+  opacity: 0.5;
 }
 
-aside .side-menu li {
-  margin: 10px;
+aside .side-menu .aside-links > div {
+  width: 25px;
+}
+
+aside .side-menu .aside-links:first-child {
+  opacity: 1;
+}
+
+aside .side-menu .aside-links:hover {
+  opacity: 1;
+}
+
+aside .side-menu .aside-links.exit {
+  width: 100%;
+  bottom: 0;
+  padding: 15px;
+  background-color: #fff;
+  border-radius: 5px;
+  opacity: 1;
+}
+
+aside .side-menu .aside-links.exit:hover {
+  background-color: transparent;
+  -webkit-box-shadow: 0px 0px 0px 2px white inset;
+          box-shadow: 0px 0px 0px 2px white inset;
+}
+
+aside .side-menu .aside-links.exit:hover h2 {
+  color: white;
+}
+
+aside .side-menu .aside-links.exit:hover img {
+  -webkit-filter: brightness(30);
+          filter: brightness(30);
+}
+
+aside .side-menu .aside-links.exit label {
+  cursor: pointer;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-weight: 600;
+}
+
+aside .side-menu .aside-links.exit label > div {
+  width: 25px;
+}
+
+aside .side-menu .aside-links.exit h2 {
+  color: #1d1fdd;
 }
 
 .burger {
@@ -301,7 +366,7 @@ aside .side-menu li {
 }
 
 .aside-active {
-  width: 40%;
+  width: 100%;
 }
 
 .burger.toggle div {
@@ -446,6 +511,14 @@ section .options input {
   border-radius: 5px;
 }
 
+section .searchbox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  gap: 5px;
+}
+
 section .products table {
   border-collapse: separate;
   width: 100%;
@@ -537,6 +610,9 @@ section .products table td:nth-last-child(2) > div {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 section .products table th:last-child,
@@ -557,6 +633,18 @@ section .products table td a {
 
 section .products table img:first-child {
   float: left;
+}
+
+.search-icon {
+  background-color: #1d1fdd;
+  width: 45px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+input[type='search'] {
+  -webkit-box-shadow: 0 8px 16px #0000000f;
+          box-shadow: 0 8px 16px #0000000f;
 }
 
 .selected {
@@ -593,6 +681,7 @@ section .products table img:first-child {
   padding: 70px 30px;
   border-radius: 15px;
   width: 80%;
+  overflow: hidden;
 }
 
 .modal .modal-content h2 {
@@ -670,6 +759,7 @@ section .products table img:first-child {
   background: #f5f5fd;
   margin-right: 10px;
   border-radius: 5px;
+  overflow: hidden;
 }
 
 .modal .modal-content form div:nth-last-child(2) > div img {
@@ -770,8 +860,8 @@ section .products table img:first-child {
 }
 
 #info .modal-content > div img {
-  width: 100%;
-  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 @media (max-width: 480px) {
@@ -835,6 +925,118 @@ section .products table img:first-child {
   font-weight: 800;
 }
 
+.empty {
+  position: absolute;
+  left: 50%;
+  top: 60%;
+}
+
+@media (max-width: 480px) {
+  .empty {
+    left: 0;
+    top: 70%;
+    text-align: center;
+  }
+}
+
+.empty h2 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #e0e0e0;
+  left: -30%;
+  position: relative;
+}
+
+@media (max-width: 480px) {
+  .empty h2 {
+    left: 0;
+  }
+}
+
+.empty span {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.empty > div {
+  left: -35%;
+  position: relative;
+  height: 100px;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 480px) {
+  .empty > div {
+    left: 0;
+  }
+}
+
+.insights {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 10px;
+  margin-top: 40px;
+  margin-bottom: 30px;
+}
+
+@media (max-width: 480px) {
+  .insights {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
+.insights .card {
+  width: 100%;
+  border-radius: 5px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background: #6c6df5;
+  color: white;
+}
+
+.insights .card:last-child {
+  background: #f6c065;
+}
+
+.insights .card:last-child div:last-child {
+  background-color: #d7a858;
+}
+
+.insights .card h4 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.insights .card p {
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+
+.insights .card div:last-child {
+  border-radius: 5px;
+  padding: 20px;
+  background-color: #5e5fd5;
+  margin-left: 5px;
+}
+
+.insights .card div:last-child h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
 /* Media Query */
 @media screen and (max-width: 480px) {
   body {
@@ -849,7 +1051,7 @@ section .products table img:first-child {
   }
   .side-menu {
     position: fixed;
-    right: 75%;
+    overflow: hidden;
     height: 100vh;
     top: 0;
     display: -webkit-box;
@@ -863,7 +1065,7 @@ section .products table img:first-child {
         -ms-flex-align: center;
             align-items: center;
     /* background-color:#1d1fdd; */
-    width: 30%;
+    width: 100%;
     -webkit-transform: translateX(-100%);
             transform: translateX(-100%);
     -webkit-transition: -webkit-transform 0.5s ease-out;

@@ -1,5 +1,6 @@
 var items = document.querySelectorAll(".item");
 var rows = document.querySelectorAll("tr");
+
 items.forEach((item) => {
   var row = item.parentElement.parentElement;
   deleteBtn = document.querySelector(
@@ -78,6 +79,7 @@ var addBtn = document.getElementById("addBtn");
 var span = document.querySelectorAll(".close");
 var content = document.querySelector("section.container");
 var aside = document.querySelector("aside");
+var emptyAdd = document.querySelector(".empty-span");
 
 // edit Modal
 var editBtn = document.querySelectorAll(".editBtn");
@@ -89,12 +91,18 @@ var info = document.getElementById("info");
 var infoBtn = document.querySelectorAll(".moreInfo");
 var infoRow = document.querySelectorAll("td:nth-child(3)");
 
+
+
 span[0].onclick = function () {
   addModal.style.transform = "translateY(-100%)";
   aside.style.filter = "none";
   content.style.filter = "none";
 };
-
+emptyAdd.onclick = function() {
+  content.style.filter = "blur(15px)";
+  aside.style.filter = "blur(15px)";
+  addModal.style.transform = "translateY(0)";
+}
 addBtn.onclick = function () {
   content.style.filter = "blur(15px)";
   aside.style.filter = "blur(15px)";
@@ -249,3 +257,44 @@ form.addEventListener("submit", (e) => {
     e.preventDefault();
   }
 });
+
+
+// Table Rows Count
+var empty = document.querySelector(".empty")
+var rowCount =  document.querySelector("body > section > form > div.products > table > tbody").childElementCount;
+
+if (rowCount == 1) {
+  empty.style.display = "block"
+} else {
+  empty.style.display = "none"
+
+}
+
+document.querySelector("#total_products").innerHTML = rowCount -1
+
+// // search
+// var rowNames = document.querySelectorAll(".name")
+// var rowInner = [];
+// var i = 0;
+
+// rowNames.forEach(e => {
+//   rowInner[i] = e.innerHTML
+//   i++
+// })
+
+// const searchBar = document.querySelector("input[name='search_p']")
+
+// searchBar.addEventListener('keyup', (e)=> {
+//   const searchString = e.target.value.toLowerCase();
+//   rowNames.forEach((row) => {
+//     row.textContent.toLowerCase().startsWith(searchString) ? row.parentElement.style.display = "" : row.parentElement.style.display = "none"
+//   })
+  
+// })
+
+function searchP()
+{
+
+  const sear = document.querySelector('#deleteSearch');
+  sear.action="search.php";
+}
