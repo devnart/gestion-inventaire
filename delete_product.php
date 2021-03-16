@@ -2,9 +2,7 @@
 include 'db_connect.php';
 
 if(isset($_POST['checkbox'])){
-if(isset($_POST['delete22']))
-{
-    $checkbox = $_POST['checkbox'];
+
 if(isset($_POST['delete22']))
 {
     $checkbox = $_POST['checkbox'];
@@ -22,7 +20,7 @@ if(isset($_POST['delete22']))
         }
     }
         
-        }}}
+        }}
         
     // if($delete=='')
     // {

@@ -114,7 +114,7 @@ include 'delete_product.php';
                     <img src="images/dashboard.svg" alt="">
 
                 </div>
-                <h2>Dashboard</h2>
+                <h2><a href="index.php">Dashboard</a></h2>
             </div>
             <div class="aside-links">
                 <div>

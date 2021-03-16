@@ -119,7 +119,7 @@ include 'delete_product.php';
                     <img src="images/dashboard.svg" alt="">
 
                 </div>
-                <h2>Dashboard</h2>
+                <h2><a href="index.php">Dashboard</a></h2>
             </div>
             <div class="aside-links">
                 <div>
@@ -161,7 +161,7 @@ include 'delete_product.php';
         </div> -->
     </aside>
     <section class="container">
-        <form action="index.php" method="POST">
+        <form action="" method="POST" id="deleteSearch">
             <div class="username">
                 <h3>Welcome, <?php echo $user ?></h3>
                 <div class="avatar">
