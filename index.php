@@ -75,6 +75,13 @@ if (isset($_POST['submit_edit'])) {
         echo 'Query Error ' . mysqli_error($connection);
     }
 }
+//requete totale product
+$sql = 'SELECT count(id) as total_p FROM product ';
+// POST the result set (set of rows)
+$result = mysqli_query($connection, $sql) or die(mysqli_error($connection));
+
+// fetch the resulting rows as an array
+$total_products = mysqli_fetch_all($result, MYSQLI_ASSOC);
 // if(isset($_GET['delete_id']))
 // {
 //      $sql_query="DELETE FROM product WHERE id=".$_GET['delete_id'];
@@ -188,7 +195,9 @@ include 'delete_product.php';
                     </div>
 
                     <div>
-                        <h3 id="total_products"></h3>
+                        <h3 id=""> <?php foreach ($total_products as $product) { ?>
+                        <h3 id=""><?php echo $product['total_p']; ?></h3>
+                        <?php } ?></h3>
                     </div>
                 </div>
                 <div class="card">
