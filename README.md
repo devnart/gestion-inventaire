@@ -11,8 +11,9 @@
     Easy to use. Clean design.
     <br />
     <a href="https://dashboard-on.herokuapp.com">View Demo</a>
-  .
-  user : admin
+  <br>
+  username : admin
+  password : admin
   </p>
 </p>
 
