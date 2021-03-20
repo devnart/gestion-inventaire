@@ -17,4 +17,6 @@
   </p>
 </p>
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+  <a href="https://github.com/devnart/gestion-inventaire">
+    <img src="images/screenshot" alt="Logo">
+  </a>
